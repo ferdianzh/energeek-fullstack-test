@@ -1,0 +1,246 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/apply/submit": {
+            "post": {
+                "tags": [
+                    "Applies"
+                ],
+                "summary": "Create new apply",
+                "description": "Returns status message",
+                "operationId": "postApply",
+                "responses": {
+                    "200": {
+                        "description": "application added",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/candidates": {
+            "get": {
+                "tags": [
+                    "Candidates"
+                ],
+                "summary": "Get list of candidates",
+                "description": "Returns list of candidates",
+                "operationId": "getCandidates",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Candidate"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/jobs": {
+            "post": {
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "Create new job",
+                "description": "Returns status message",
+                "operationId": "createJob",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Job"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "operation success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "operation failed"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/skills": {
+            "post": {
+                "tags": [
+                    "Skills"
+                ],
+                "summary": "Create new skill",
+                "description": "Returns status message",
+                "operationId": "createSkill",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Skill"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "operation success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "operation failed"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Candidate": {
+                "title": "Candidate",
+                "description": "Candidate model",
+                "properties": {
+                    "job_id": {
+                        "title": "Job ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "example": "Joko"
+                    },
+                    "email": {
+                        "title": "Email",
+                        "type": "string",
+                        "example": "joko@gmail.com"
+                    },
+                    "phone": {
+                        "title": "Phone",
+                        "type": "string",
+                        "example": "081234567890"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Candidate"
+                }
+            },
+            "Job": {
+                "title": "Job",
+                "description": "Job model",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "example": "Backend Developer"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Job"
+                }
+            },
+            "Skill": {
+                "title": "Skill",
+                "description": "Skill model",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "example": "PHP"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Skill"
+                }
+            }
+        }
+    }
+}
